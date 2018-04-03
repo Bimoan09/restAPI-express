@@ -72,6 +72,7 @@ exports.buku_update = function(req,res){
     }
  })  
  .then((buku) => {
+     model.bukus.findById(req.params.id)
     res.json({
         msg: "buku berhasil diupdate",
         data: buku
@@ -85,7 +86,8 @@ exports.buku_update = function(req,res){
     })
 }; 
 
-exports.buku_delete = function(res,req){
+exports.buku_delete = function(req,res){
+    
     const buku_id = (req.params.id);
     model.bukus.destroy({  where: {
         id: buku_id
